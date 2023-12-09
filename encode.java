@@ -41,11 +41,11 @@ public class encode {
 
             morse_code_dictionary = creating_morse_map(); // putting all the values into the map
 
-            String result = getting_result(letters, morse_code_dictionary);
+            String result = getting_result(letters, morse_code_dictionary); // getting coded string
 
-            System.out.println(result);
+            System.out.print("\nResult: "); // outputting result
 
-
+            System.out.println(result); // outputting result
 
         } catch (Exception e){ // if there is anything that cannot be encoded, error appears 
 
@@ -54,6 +54,9 @@ public class encode {
             System.exit(0); // terminating program
 
         }
+
+        // END OF THE SECOND PART
+        //-----------------------------------------------------------------------------
         
 
     }
