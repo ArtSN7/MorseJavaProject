@@ -19,7 +19,7 @@ public class encode {
 
         System.out.println("\nENCODING\n--------"); // sending what we do
 
-        System.out.println("You need to input the text which you want to encode.\n"); // asking for the input
+        System.out.println("You need to input the text which you want to encode. ( all the unknown values will be encoded as spaces\n"); // asking for the input
         System.out.print("\nInput: "); // field for the input
 
 
@@ -41,6 +41,10 @@ public class encode {
 
             morse_code_dictionary = creating_morse_map(); // putting all the values into the map
 
+            String result = getting_result(letters, morse_code_dictionary);
+
+            System.out.println(result);
+
 
 
         } catch (Exception e){ // if there is anything that cannot be encoded, error appears 
@@ -51,6 +55,32 @@ public class encode {
 
         }
         
+
+    }
+
+    // function which does encoding and returning final result
+    public static String getting_result(ArrayList<String> letter_result, Map<String, String> code){
+
+        String result = ""; // returning value 
+        String n = ""; // string value to store value from the map
+
+        for (String i : letter_result) {
+
+            n = code.get(i.toUpperCase());
+
+            if (n != null){
+
+                result += n;
+                result += " ";
+
+            }
+            else{
+                result += "/ ";
+            }
+
+        }
+
+        return result;
 
     }
 
