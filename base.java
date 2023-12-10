@@ -19,17 +19,17 @@ public class base{
         // FIRST PART - ASKING TO CHOOSE THE FUNCTION 
 
         System.out.println("-----------\nHello!\nWhat do you want to do?\n"); // explanation to user
-        System.out.println("1. Encode a plain text to The Morse Code\n2. Decode The Morse Code to a plain text\n3. Add new specific Morse codes\n\n"); // explanation to user
+        System.out.println("1. Encode a plain text to The Morse Code\n2. Decode The Morse Code to a plain text\n3. Add new specific Morse codes\n4. Quiz\n\n"); // explanation to user
         System.out.print("Input: "); // asking to choose what will program need to do ( MUST BE INTEGER )
 
         
-        while ( first_choice < 1 || first_choice > 3){ // user must input 1, 2 or 3 to go further 
+        while ( first_choice < 1 || first_choice > 4){ // user must input 1, 2 or 3 or 4 to go further 
  
             try{ // catching errors ( wrong input )
 
                 if (first_choice_try != true){ // if it is not the first try, I need to print out another text to the user
 
-                    System.out.print("\nWrong value! Your input must be 1 , 2 or 3 !\n\nTry again: "); // printing text
+                    System.out.print("\nWrong value! Your input must be 1 , 2, 3 or 4!\n\nTry again: "); // printing text
 
                 }
 
@@ -68,6 +68,11 @@ public class base{
         else if ( first_choice == 3){ // Add new specific Morse codes
 
             add_morse.adding_morse_function(); // calling adding to morse function
+
+        }
+        else if ( first_choice == 4){ // Add new specific Morse codes
+
+            quiz.quiz_function(); // calling adding to morse function
 
         }
 
