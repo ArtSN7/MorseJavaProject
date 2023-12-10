@@ -62,7 +62,7 @@ public class quiz {
 
         for(int j = 0; j < num_of_words; j ++){
 
-            System.out.printf("What is a morse code for word %s\n", test[j]);
+            System.out.printf("\nWhat is a morse code for word %s\n", test[j]);
             System.out.print("\nInput: ");
 
             res = input.nextLine();
