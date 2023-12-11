@@ -1,12 +1,94 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Random;
 import java.io.File;  // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class quiz {
+
+    // function which allow user to do a quiz or to check scoreboard
+    public static void quiz_choose_function(){
+
+        Scanner input = new Scanner(System.in); // creating scanner for inputs
+
+        int first_choice = 0; // variable which shows which function was choosen in the first part
+
+        boolean first_choice_try = true; // variable which shows if person tries again
+
+        System.out.println("\nQUIZ\n--------"); // showing chosen command
+
+        System.out.println("Please, input the number of function which you want to do.\n\n1. Quiz\n2. Scoreboard\n"); // asking for the input
+        System.out.print("\nInput: "); // field for the input
+
+        while ( first_choice < 1 || first_choice > 2){ // user must input 1, 2 or 3 or 4 to go further 
+ 
+            try{ // catching errors ( wrong input )
+
+                if (first_choice_try != true){ // if it is not the first try, I need to print out another text to the user
+
+                    System.out.print("\nWrong value! Your input must be 1 or 2!\n\nTry again: "); // printing text
+
+                }
+
+                first_choice = input.nextInt(); // getting input from user ( must be integer )
+                first_choice_try = false; // declaring that next tries to input value are not the first ones
+
+            } catch ( Exception e){ // catching an error ( if user tries to input not integer )
+
+                System.out.print("\nYou are not a very smart user! Your input was not an INTEGER. Try again later! Bye!"); // sending a message to user
+
+                System.exit(0); // terminating program
+
+            }
+        }
+
+        if (first_choice == 1){ // if input is 1 
+            quiz_function(); // then it is quiz
+        }
+        else{ // else
+            scoreboard_function(); // then it is scoreboard
+        }
+
+
+    }
+
+    // function which shows all attempts in the decending order
+    public static void scoreboard_function(){
+
+        ArrayList<Double> values = new ArrayList<>();
+
+        try {
+            File myObj = new File("results.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+              String data = myReader.nextLine();
+              values.add(Double.parseDouble(data.split(" ")[0]));
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while working with the scoreboard. Try again later, please.");
+            e.printStackTrace();
+        }
+
+        Collections.sort(values); // sorting values from lowest to highest 
+        Collections.reverse(values); // reversing list
+
+        System.out.println("\n\nYour results:\n");
+
+
+        for ( double i : values){ // printing out all the results
+            System.out.println(i);
+        }
+        
+    }
+
+
 
     public static void quiz_function(){
 
@@ -29,7 +111,7 @@ public class quiz {
 
         try{ // trying to catch any errors
 
-            num_of_words = input.nextInt(); // getting number of words for the quiz
+            num_of_words = Integer.parseInt(input.nextLine()); // getting number of words for the quiz
 
         } catch (Exception e){ // if there is anything that cannot be decoded, error appears 
 
@@ -65,18 +147,49 @@ public class quiz {
             System.out.printf("\nWhat is a morse code for word %s\n", test[j]);
             System.out.print("\nInput: ");
 
-            res = input.nextLine();
+            res = input.nextLine(); // getting input
 
             user_answers.put(test[j], res); // adding user's answer to the map
 
         }
 
-        //System.out.println(right_answers);
-        //System.out.println(user_answers);
+        int score = 0; // variable that stores number of right answers
 
+        for (int j = 0; j < num_of_words; j ++){ // comparing user answers to the right ones
+
+            if (right_answers.get(test[j]).strip().equals(user_answers.get(test[j]).strip())){ // if this is right one
+
+                score += 1; // then we add 1 to the score
+            }
+
+        }
+
+
+        adding_result_file(score / 1.0 / num_of_words * 100.0); // adding results to the file results.txt
 
     }
 
+
+    public static void adding_result_file(double score){
+        try {
+            FileWriter myWriter = new FileWriter("results.txt", true);    
+            // false for overwriting and true for adding to the existing text
+
+            myWriter.write(Double.toString(score) + " %");
+            myWriter.write("\n");
+            
+            myWriter.close();
+
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing result in the file");
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+    // function that encodes string
     public static String encoding_function(String text){
 
         ArrayList<String> letters = new ArrayList<>(); // creating array list for storing letters of the input

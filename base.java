@@ -72,7 +72,7 @@ public class base{
         }
         else if ( first_choice == 4){ // Add new specific Morse codes
 
-            quiz.quiz_function(); // calling adding to morse function
+            quiz.quiz_choose_function(); // calling adding to morse function
 
         }
 
