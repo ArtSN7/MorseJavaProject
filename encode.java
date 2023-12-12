@@ -19,7 +19,7 @@ public class encode {
 
         System.out.println("\nENCODING\n--------"); // sending what we do
 
-        System.out.println("You need to input the text which you want to encode. ( all the unknown values will be encoded as spaces\n"); // asking for the input
+        System.out.println("You need to input the text which you want to encode. ( all the unknown values will be encoded as spaces )\n"); // asking for the input
         System.out.print("\nInput: "); // field for the input
 
 
