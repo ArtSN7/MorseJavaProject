@@ -12,7 +12,7 @@ public class encode {
         //-----------------------------------------------------------------------------
         // FIRST PART - ASKING USER TO INPUT TEXT
 
-        String text; // storing input
+        String text; // storing inputt
         ArrayList<String> letters = new ArrayList<>(); // creating array list for storing letters of the input
 
         Scanner input = new Scanner(System.in); // creating scanner for inputs
