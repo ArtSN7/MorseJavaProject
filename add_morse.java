@@ -26,6 +26,7 @@ public class add_morse {
         String symbol = input.nextLine(); // variable to store symbol
 
         System.out.print("\nInput code: "); // input code
+        
 
         String code = input.nextLine(); // variable to store code
 
