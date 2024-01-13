@@ -15,6 +15,7 @@ public class decode {
 
         //-----------------------------------------------------------------------------
         // FIRST PART - ASKING USER TO INPUT TEXT
+        
 
         String text; // storing input
         ArrayList<String> letters = new ArrayList<>(); // creating array list for storing letters of the input
